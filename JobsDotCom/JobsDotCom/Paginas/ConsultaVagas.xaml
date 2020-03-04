@@ -11,11 +11,11 @@
                 <Label Text="Vagas" FontSize="24"/>
                 <Label Text="encontre seu emprego aqui" FontSize="20"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal">   
                 <Button Text="Adicionar" Clicked="GoCadastro"/>
                 <Button Text="Minhas Vagas" Clicked="GoMinhasVagas"/>
             </StackLayout>
-            <Entry Placeholder="Pesquisar"/>
+            <Entry Placeholder="Pesquisar" TextChanged="PesquisarAction"/>
             <Label Text="" x:Name="lblCount"/>
             <ListView x:Name="ListaVagas" HasUnevenRows="True">
                 <ListView.ItemTemplate>

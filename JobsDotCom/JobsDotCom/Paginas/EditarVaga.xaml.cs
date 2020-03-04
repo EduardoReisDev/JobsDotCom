@@ -6,24 +6,33 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using JobsDotCom.Modelos;
 using JobsDotCom.Banco;
+using JobsDotCom.Modelos;
 
 namespace JobsDotCom.Paginas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CadastroVagas : ContentPage
+    public partial class EditarVaga : ContentPage
     {
-        public CadastroVagas()
+
+        private Vaga vaga { get; set; }
+        public EditarVaga(Vaga vaga)
         {
             InitializeComponent();
 
+            NomeVaga.Text = vaga.NomeVaga;
+            Empresa.Text = vaga.Empresa;
+            Quantidade.Text = vaga.Quantidade.ToString();
+            Cidade.Text = vaga.Cidade;
+            Salario.Text = vaga.Salario.ToString();
+            Descricao.Text = vaga.Descricao;
+            TipoContratacao.IsToggled = (vaga.TipoContratacao == "CLT") ? false : true;
+            Telefone.Text = vaga.Telefone;
+            Email.Text = vaga.Email;
         }
 
-        private void SalvarAction(object sender, EventArgs args)
+        public void SalvarAction (object sender, EventArgs args)
         {
-            //Obter dados da tela
-            Vaga vaga = new Vaga();
             vaga.NomeVaga = NomeVaga.Text;
             vaga.Quantidade = short.Parse(Quantidade.Text);
             vaga.Salario = double.Parse(Salario.Text);
@@ -34,12 +43,11 @@ namespace JobsDotCom.Paginas
             vaga.Telefone = Telefone.Text;
             vaga.Email = Email.Text;
 
-            //Salvar informacoes no banco
             Database database = new Database();
-            database.Cadastro(vaga);
+            database.Atualizacao(vaga);
 
-            //Voltar para tela de pesquisa
-            App.Current.MainPage = new NavigationPage(new ConsultaVagas());
+            App.Current.MainPage = new NavigationPage(new VagasCadastradas());
+
         }
     }
 }
