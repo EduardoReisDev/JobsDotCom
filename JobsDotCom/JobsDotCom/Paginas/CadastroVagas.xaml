@@ -5,26 +5,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="JobsDotCom.Paginas.CadastroVagas">
+
+    <NavigationPage.TitleView>
+        <Label Text="Cadastro da Vaga" TextColor="#22757E" FontSize="25" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"/>
+    </NavigationPage.TitleView>
+
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <Entry x:Name="NomeVaga" Placeholder="Vaga"/>
-                <Entry x:Name="Empresa" Placeholder="Empresa"/>
-                <Entry x:Name="Quantidade" Placeholder="Quantidade"/>
-                <Entry x:Name="Cidade" Placeholder="Cidade"/>
-                <Entry x:Name="Salario" Placeholder="Salario"/>
-                <Label Text="Descrição do cargo"/>
-                <Editor x:Name="Descricao" HeightRequest="200"/>
-                <StackLayout>
-                    <Label Text="Tipo de contração"/>
-                    <Label Text="CLT"/>
-                    <Switch x:Name="TipoContratacao"/>
-                    <Label Text="PJ"/>
-                </StackLayout>
-                <Entry x:Name="Telefone" Placeholder="Telefone"/>
-                <Entry x:Name="Email" Placeholder="Email"/>
+            <StackLayout BackgroundColor="#2B3044">
+                <StackLayout Margin="25,10,25,20">
+                    <Entry x:Name="NomeVaga" Placeholder="Vaga" PlaceholderColor="#8F8F8F" TextColor="#22757E"/>
+                    <Entry x:Name="Empresa" Placeholder="Empresa" PlaceholderColor="#8F8F8F" TextColor="#22757E"/>
+                    <Entry x:Name="Quantidade" Placeholder="Quantidade" PlaceholderColor="#8F8F8F" TextColor="#22757E"/>
+                    <Entry x:Name="Cidade" Placeholder="Cidade" PlaceholderColor="#8F8F8F" TextColor="#22757E"/>
+                    <Entry x:Name="Salario" Placeholder="Salario" PlaceholderColor="#8F8F8F" TextColor="#22757E"/>
+                    
+                    <Label Text="Descrição do cargo" TextColor="#8F8F8F" FontSize="17"/>
+                    <Editor x:Name="Descricao" HeightRequest="100" PlaceholderColor="#8F8F8F" TextColor="#22757E"/>
 
-                <Button Text="Salvar" Clicked="SalvarAction"/>
+                    <Label Text="Tipo de contração" TextColor="#8F8F8F" FontSize="17"/>
+                    <StackLayout Orientation="Horizontal" Margin="10">
+                        <Label Text="CLT" TextColor="#8F8F8F"/>
+                        <Switch x:Name="TipoContratacao"/>
+                        <Label Text="PJ" TextColor="#8F8F8F"/>
+                    </StackLayout>
+                    <Entry x:Name="Telefone" Placeholder="Telefone" PlaceholderColor="#8F8F8F" TextColor="#22757E"/>
+                    <Entry x:Name="Email" Placeholder="Email" PlaceholderColor="#8F8F8F" TextColor="#22757E"/>
+                    <Frame HasShadow="True" Padding="0">
+                        <Button Text="Salvar" BackgroundColor="#262B3E" TextColor="#22757E" Clicked="SalvarAction"/>
+                    </Frame>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

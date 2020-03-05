@@ -4,46 +4,74 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
              x:Class="JobsDotCom.Paginas.ConsultaVagas">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Vagas" FontSize="24"/>
-                <Label Text="encontre seu emprego aqui" FontSize="20"/>
+        <ScrollView>
+            <StackLayout BackgroundColor="#2B3044">
+
+                <StackLayout Margin="0,30,0,0">
+                    <Label Text="Jobs.com" FontSize="40" HorizontalOptions="Center" TextColor="#22757E" FontAttributes="Bold"/>
+                    <Label Text="Seu próximo emprego está aqui!" FontSize="15" HorizontalOptions="Center" TextColor="#22757E"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20,0,0">
+                    <Frame HasShadow="True" Padding="0">
+                        <Button Text="Adicionar" BackgroundColor="#262B3E" TextColor="#22757E" Clicked="GoCadastro"/>
+                    </Frame>
+                    <Frame HasShadow="True" Padding="0" Margin="20,0,0,0">
+                        <Button Text="Minhas Vagas" BackgroundColor="#262B3E" TextColor="#22757E" Clicked="GoMinhasVagas"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="15,5,15,0">
+                    <Image Source="search.png" WidthRequest="25"/>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Entry Placeholder="Pesquisar" PlaceholderColor="#8F8F8F" TextColor="#22757E" TextChanged="PesquisarAction"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="15,5,0,0">
+                    <Label Text="Vagas cadastradas: " TextColor="#8F8F8F" FontSize="15"/>
+                    <Label Text="" x:Name="lblCount" TextColor="#8F8F8F" FontSize="15"/>
+                </StackLayout>
+
+                <ListView x:Name="ListaVagas" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0" Margin="10,10,10,0" CornerRadius="10" HasShadow="True" BackgroundColor="#262B3E">
+                                    <StackLayout Margin="10,10,10,10">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <StackLayout Grid.Column="0">
+                                                <Label Text="{Binding NomeVaga}" FontAttributes="Bold" FontSize="20" TextColor="#22757E"/>
+                                                <Label Text="{Binding Empresa}" FontSize="17" TextColor="#8F8F8F"/>
+                                                <Label Text="{Binding Cidade}" FontSize="17" TextColor="#8F8F8F"/>
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                                <Label Text="+Detalhes"  TextColor="#22757E">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="MaisDetalheAction" CommandParameter="{Binding .}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">   
-                <Button Text="Adicionar" Clicked="GoCadastro"/>
-                <Button Text="Minhas Vagas" Clicked="GoMinhasVagas"/>
-            </StackLayout>
-            <Entry Placeholder="Pesquisar" TextChanged="PesquisarAction"/>
-            <Label Text="" x:Name="lblCount"/>
-            <ListView x:Name="ListaVagas" HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <StackLayout Grid.Column="0">
-                                    <Label Text="{Binding NomeVaga}" FontAttributes="Bold"/>
-                                    <Label Text="{Binding Empresa}"/>
-                                    <Label Text="{Binding Cidade}"/>
-                                </StackLayout>
-                                <Label Text="+Detalhes" Grid.Column="1">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="MaisDetalheAction" CommandParameter="{Binding .}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

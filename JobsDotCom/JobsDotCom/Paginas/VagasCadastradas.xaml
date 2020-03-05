@@ -6,50 +6,68 @@
              mc:Ignorable="d"
              x:Class="JobsDotCom.Paginas.VagasCadastradas"
              Title="VagasCadastradas">
+
+    <NavigationPage.TitleView>
+        <Label Text="Vagas Cadastradas" TextColor="#22757E" FontSize="25" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"/>
+    </NavigationPage.TitleView>
+
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#2B3044">
             <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Vagas" FontSize="24"/>
-                    <Label Text="encontre seu emprego aqui" FontSize="10"/>
+
+                <StackLayout Orientation="Horizontal" Margin="15,5,15,0">
+                    <Image Source="search.png" WidthRequest="25"/>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Entry Placeholder="Pesquisar" PlaceholderColor="#8F8F8F" TextColor="#22757E" TextChanged="PesquisarAction"/>
+                    </StackLayout>
                 </StackLayout>
-                <Entry Placeholder="Pesquisar" TextChanged="PesquisarAction"/>
-                <Label Text="" x:Name="lblCount"/>
+
+                <StackLayout Orientation="Horizontal" Margin="15,5,0,0">
+                    <Label Text="Vagas cadastradas: " TextColor="#8F8F8F" FontSize="15"/>
+                    <Label Text="" x:Name="lblCount" TextColor="#8F8F8F" FontSize="15"/>
+                </StackLayout>
+                
+                
                 <ListView x:Name="ListaVagas" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                    </Grid.RowDefinitions>
+                                <Frame Padding="0" Margin="10,10,10,0" CornerRadius="10" HasShadow="True" BackgroundColor="#262B3E">
+                                    <StackLayout Margin="10,10,10,10">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
 
-                                    <StackLayout Grid.Column="0">
-                                        <Label Text="{Binding NomeVaga}" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Empresa}"/>
-                                        <Label Text="{Binding Cidade}"/>
+                                            <StackLayout Grid.Column="0">
+                                                <Label Text="{Binding NomeVaga}" FontAttributes="Bold" FontSize="20" TextColor="#22757E"/>
+                                                <Label Text="{Binding Empresa}" FontSize="17" TextColor="#8F8F8F"/>
+                                                <Label Text="{Binding Cidade}" FontSize="17" TextColor="#8F8F8F"/>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal" Grid.Column="1" VerticalOptions="Center">
+                                                <Label Text="Editar" TextColor="#22757E">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="EditarAction" CommandParameter="{Binding .}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+
+                                                <Label Text="|" TextColor="#22757E"/>
+
+                                                <Label Text="Excluir" TextColor="#22757E">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="ExcluirAction" CommandParameter="{Binding .}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
                                     </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal" Grid.Column="1"> 
-                                        <Label Text="Editar">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="EditarAction" CommandParameter="{Binding .}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-
-                                        <Label Text="|"/>
-
-                                        <Label Text="Excluir">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="ExcluirAction" CommandParameter="{Binding .}"/>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                    </StackLayout>
-                                </Grid>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
