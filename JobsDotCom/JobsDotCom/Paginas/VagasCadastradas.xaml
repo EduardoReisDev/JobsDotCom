@@ -8,8 +8,7 @@
              Title="VagasCadastradas">
 
     <NavigationPage.TitleView>
-        <Label Text="Vagas Cadastradas" TextColor="#22757E" FontSize="25" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
-               HorizontalOptions="CenterAndExpand"/>
+        <Label Text="Vagas Cadastradas" TextColor="#22757E" FontSize="25" FontAttributes="Bold"/>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>

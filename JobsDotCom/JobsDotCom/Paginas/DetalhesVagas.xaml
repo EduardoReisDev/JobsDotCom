@@ -7,8 +7,7 @@
              x:Class="JobsDotCom.Paginas.DetalhesVagas">
 
     <NavigationPage.TitleView>
-        <Label Text="Detalhes da Vaga" TextColor="#22757E" FontSize="25" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
-               HorizontalOptions="CenterAndExpand"/>
+        <Label Text="Detalhes da Vaga" TextColor="#22757E" FontSize="25" FontAttributes="Bold"/>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>

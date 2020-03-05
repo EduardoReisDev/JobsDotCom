@@ -7,8 +7,7 @@
              x:Class="JobsDotCom.Paginas.EditarVaga">
     
     <NavigationPage.TitleView>
-        <Label Text="Editar Vaga" TextColor="#22757E" FontSize="25" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
-               HorizontalOptions="CenterAndExpand"/>
+        <Label Text="Editar Vaga" TextColor="#22757E" FontSize="25" FontAttributes="Bold"/>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
