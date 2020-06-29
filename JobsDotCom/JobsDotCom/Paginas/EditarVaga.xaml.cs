@@ -20,6 +20,8 @@ namespace JobsDotCom.Paginas
         {
             InitializeComponent();
 
+            this.vaga = vaga;
+
             NomeVaga.Text = vaga.NomeVaga;
             Empresa.Text = vaga.Empresa;
             Quantidade.Text = vaga.Quantidade.ToString();
